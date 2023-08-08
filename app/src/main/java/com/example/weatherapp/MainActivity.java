@@ -164,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
                             loadingPB.setVisibility(View.GONE);
                             homeRL.setVisibility(View.VISIBLE);
                             weatherRVModalArrayList.clear();
-
                             if (response.has("current")) {
                                 String Ktemperature = response.getJSONObject("current").getString("temp");
                                 float KtoC = Float.parseFloat(Ktemperature) - 273.15f;
@@ -184,11 +183,11 @@ public class MainActivity extends AppCompatActivity {
                                         .into(iconIV);
                                 if (isDay.contains("d")) {
                                     Glide.with(MainActivity.this)
-                                            .load("https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80")
+                                            .load("https://img.lovepik.com/background/20211030/medium/lovepik-city-sky-mobile-wallpaper-background-image_400458919.jpg")
                                             .into(backIV);
                                 } else {
                                     Glide.with(MainActivity.this)
-                                            .load("https://images.unsplash.com/photo-1615233262415-1a942703bc71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80")
+                                            .load("https://i.pinimg.com/originals/0b/7a/c2/0b7ac22e4e856979255dd38a558d56bd.jpg")
                                             .into(backIV);
                                 }
                                 String timeZ = response.getString("timezone_offset");
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                                         String tempC =decimalFormat.format(tempK - 273.15f);
                                         String img = hourObj.getJSONArray("weather").getJSONObject(0).getString("icon");
                                         Double wind = hourObj.getDouble("wind_speed");
-                                        weatherRVModalArrayList.add(new WeatherRVModal(time, tempC, img, wind,timeZ));
+                                        weatherRVModalArrayList.add(new WeatherRVModal(time, tempC, img, wind,timeZ,isDay));
                                     }
                                     weatherRVAdapter.notifyDataSetChanged();
                                 }

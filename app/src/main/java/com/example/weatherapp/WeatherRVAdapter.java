@@ -52,6 +52,11 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"+sign+hours));
         holder.timeTV.setText(sdf.format(date));
+        if (modal.getIsday().contains("d")) {
+            holder.itemView.setBackgroundResource(R.drawable.background_day);
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.background_night);
+        }
 
     }
 
